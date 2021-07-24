@@ -183,6 +183,8 @@ function mode(){
     document.getElementById("merabody").classList.toggle('night');
     }
     if ( document.getElementById("merabody").classList.contains('night'))
+    {
     document.getElementById("mode").innerHTML='<i class="fas fa-sun"></i>';
+    }
     
 }
