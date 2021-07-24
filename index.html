@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/eb7789cf87.js" crossorigin="anonymous"></script>
+    <script src="guessmcq.js"></script>
+    <title>COLOR GUESS</title>
+</head>
+<body id="merabody" class="day">
+    <button id="mode" onclick="mode()"><i class="fas fa-moon"></i></button>
+    <div class="head_bar">
+        <h1>GUESS THE COLOR CODE</h1>
+    </div>
+    <div class="container">
+        <div id="popup" class="popup">
+            <h3 id="res">Let's Play!!</h3>
+            <br>
+            <button id="next" onclick=start()><i class="fas fa-hand-peace"></i></button>
+        </div>
+        <div class="left_part">
+            <div id="ques" class="ques">
+                <p id="qh">Guess Color</p>
+            </div>
+            <div class="options">
+                <button class="btn" id="op1" onclick="s1()"></button>
+                <button class="btn" id="op2" onclick="s2()"></button>
+                <button class="btn" id="op3" onclick="s3()"></button>
+                <button class="btn" id="op4" onclick="s4()"></button>
+            </div>
+        </div>
+        <div class="right_part">
+            <div id="tm">
+                    <div>
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                     <div>
+                         <p id="timer">5</p>
+                     </div>
+            </div>
+                <h2>Score</h2>
+                <p id="score">0</p>
+                <button id="restarter" onclick="window.location.reload()">Restart</button>
+            </div>
+
+    </div>
+</body>
+</html>
