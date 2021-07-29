@@ -61,6 +61,90 @@ body{
     margin-left: 1px;
 }
 
+#scoreboard{
+    background-color:rgb(1, 62, 143);
+    height:100vh;
+    width:100%;
+    position:absolute;
+    z-index: 200;
+    display: none;
+    justify-content: center;
+    align-items:center;
+    text-align:center;
+    flex-direction: column;
+}
+
+#show_score{
+    background-color:transparent;
+    border: none;
+}
+
+.fa-star-half-alt{
+    color:gold;
+    font-size: 30px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.fa-star-half-alt:hover{
+    color:rgb(251, 251, 248);
+    font-size: 50px;
+    transition: all 0.3s ease;
+}
+
+#scr_head{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.fa-award{
+    font-size: 50px;
+    margin: 10px;
+    color: gold;
+}
+
+#scr_title{
+    font-size: 40px;
+    border-bottom: none;
+}
+
+#score_card{
+    width:350px;
+    height:350px;
+    background-color:white;
+    border-radius: 10px;
+    border: 5px solid gold;
+    overflow-x: hidden;
+}
+
+.scr_data{
+    color:rgb(255, 255, 255);
+    width: 340px;
+    height: 50px;
+    background-color:rgb(0, 45, 104);
+    border-radius: 10px;
+    align-items:center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.fa-arrow-circle-left{
+    font-size: 20px;
+}
+#back_btn{
+    width: 50px;
+    margin: 5px;
+    height: 30px;
+    background-color:gold;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+}
+
+
 #finalscreen{
     background-color:rgb(1, 62, 143);
     height:100vh;
@@ -70,9 +154,18 @@ body{
     display: none;
     justify-content: center;
     align-items:center;
+    text-align:center;
     flex-direction: column;
 }
 
+#player{
+    width: 160px;
+    height: 40px;
+    margin: 15px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+}
 .fa-trophy{
     font-size:150px;
     color: gold;
@@ -186,26 +279,48 @@ body{
 
 h2{
     color:white;
-    font-size: 40px;
+    font-size: 35px;
     border-bottom: 1px solid white;
+}
+
+#highscore{
+    color:white;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+#h_score{
+    margin-top: 10px;
+    color:rgb(219, 9, 79);
+}
+#score_box{
+    display: none;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    flex-direction: column;
 }
 
 #score{
     color:white;
     font-size: 80px;
 }
+
 #timer{
     color:rgb(255, 0, 0);
     font-size: 50px;
     width: 100px;
 }
+
 #tm{
-   
     width: 200px;
     font-size: 20px;
     font-weight: bold;
     display: flex;
-    margin-bottom:100px;
+    margin-bottom:80px;
+    margin-top:80px;
     display: none;
 }
 .fa-stopwatch{
@@ -253,13 +368,16 @@ h2{
     color: white;
 }
 
+#hs{
+    font-size: 25px;
+}
 @media (max-width: 700px) 
 {
     body{
         overflow: none;
     }
     .head_bar h1{
-        font-size: 30px;
+        font-size: 28px;
     }
     #qh{
         font-size: 25px;
@@ -267,14 +385,14 @@ h2{
         color:rgb(255, 255, 255);
     }
     h2{
-        font-size: 28px;
+        font-size: 18px;
         margin-right: 10px;
         margin-left: 10px;
         border-bottom: none;
      
     }
     #score{
-        font-size: 30px;
+        font-size: 18px;
         margin-left: 0px;
         width: 50px;
     }
@@ -285,8 +403,8 @@ h2{
         font-size: 50px;
     }
     #restarter{
-        width:40px;
-        height: 40px;
+        width:35px;
+        height: 35px;
         border: none;
         background-color:cornflowerblue;
         margin: 10px;
@@ -322,22 +440,23 @@ h2{
     }
     #timer{
         color:rgb(255, 0, 0);
-        font-size: 32px;
-        width:60px;
+        font-size: 22px;
+        width:40px;
     }
     #tm{
-        font-size: 20px;
+        font-size: 22px;
         display: flex;
-        margin-bottom:0px;
-        width:130px;
+        width:120px;
         display: none;
         border-right: 1px solid white;
+        border-left: 1px solid white;
     }
     .fa-stopwatch{
         color:white;
-        font-size: 32px;
-        width: 70px;
-        margin-right: -20px;
+        font-size: 22px;
+        width: 50px;
+        margin-left: 20px;
+        margin-right: -10px;
     }
     .fa-trophy{
         font-size:120px;
@@ -357,6 +476,44 @@ h2{
     }
     #res{
         font-size: 30px;
+    }
+    #highscore{
+        margin-left: 10px;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        text-align:center;
+    }
+
+    #hs{
+        font-size: 15px;
+    }
+
+    .fa-award{
+        font-size: 40px;
+        margin: 10px;
+        color: gold;
+    }
+    
+    #scr_title{
+        font-size: 25px;
+    }
+    
+    #score_card{
+        width:260px;
+    }
+    
+    .scr_data{
+        color:rgb(255, 255, 255);
+        width: 250px;
+    }
+
+    .fa-star-half-alt{
+        font-size: 30px;
+        margin-top: 0px;
+    }
+    .fa-star-half-alt:hover{
+        font-size:40px;
     }
 }
 
