@@ -111,7 +111,7 @@ body{
 
 #score_card{
     width:350px;
-    height:350px;
+    height:400px;
     background-color:white;
     border-radius: 10px;
     border: 5px solid gold;
@@ -500,12 +500,13 @@ h2{
     }
     
     #score_card{
-        width:260px;
+        width:280px;
+        height: 420px;
     }
     
     .scr_data{
         color:rgb(255, 255, 255);
-        width: 250px;
+        width: 270px;
     }
 
     .fa-star-half-alt{
