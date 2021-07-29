@@ -1,15 +1,42 @@
 var ans;
 var choosen;
 var sum=0;
-var t=5;
+var t=10;
 var tt;
 var chance=0;
+var player;
+
+//Onstart Check for highscorer
+function highscorefinder()
+{
+var h_name="Computer";
+var h_scorer=-100;
+const data=localStorage;
+const score_card=document.getElementById("score_card");
+for(var i=0;i<data.length;i++)
+{
+const score_data=document.createElement("div");
+score_data.setAttribute("class","scr_data");
+score_data.innerText=data.key(i)+" : "+data.getItem(data.key(i));
+score_card.appendChild(score_data);
+if(data.getItem(data.key(i))>h_scorer)
+{
+    h_name=data.key(i);
+    h_scorer=Number(data.getItem(h_name));
+}
+}
+document.getElementById("h_score").innerText=h_name+" : "+h_scorer;
+}
+
 function start()
 {
+    player=document.getElementById("player").value;
+    document.getElementById("show_score").style.display="none";
     if(chance<10)
     {
-    t=6;
+    t=11;
     chance++;
+
     if(chance<10)
     document.getElementById("curr").innerText="0"+chance;
     else
@@ -17,12 +44,12 @@ function start()
 
     document.getElementById("popup").style.display="none";
     document.getElementById("restarter").style.display="block";
+    document.getElementById("score_box").style.display="flex";
     document.getElementById("tm").style.display="flex";
     ans=Math.floor(Math.random() * 16777215).toString(16);
     tt=setInterval(timer,1000);
 
     document.getElementById("qh").innerHTML="Color: #"+ ans;
-    //document.get ElementById("ques").style.background="white";
     document.getElementById("op1").style.background="#"+ans;
     document.getElementById("op2").style.background="#"+Math.floor(Math.random() * 16777215).toString(16);
     document.getElementById("op3").style.background="#"+Math.floor(Math.random() * 16777215).toString(16);
@@ -38,18 +65,27 @@ function start()
     else
     {
         document.getElementById("finalscreen").style.display="flex";
-        document.getElementById("fscr").innerText="Your Score : "+sum;
-        const start=()=>{
+        
+        if (player=="")
+        player="Player";
+      
+        document.getElementById("fscr").innerHTML="Hi, "+player+"!!<br>You Scored : "+sum;
+        
+        //Save Score Into Local Storage
+        localStorage.setItem(player,sum);
+
+        //Confetti Start
+        const con_start=()=>{
             setTimeout(function(){
                 confetti.start();
             },100)
         }
-       
-        start();
+        con_start();
 
     }
 }
 
+//timer
 function timer()
 {
     t-=1;
@@ -78,7 +114,7 @@ function hextorgb(x)
       return aRgb;
 }
 
-
+//Options Button Function
 function s1(){
     choosen=document.getElementById("op1").style.backgroundColor;
     clearTimeout(tt);
@@ -90,6 +126,7 @@ function s1(){
         correct.play();
         document.getElementById("popup").style.background="green";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Correct Choice<br>+10";
         sum+=10;
         document.getElementById("score").innerHTML=sum;
@@ -99,8 +136,10 @@ function s1(){
     {
         var wrong=new Audio("Wrong.mp3");
         wrong.play();
+        
         document.getElementById("popup").style.background="red";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Wrong Choice!!<br>-5";
         sum-=5;
         document.getElementById("score").innerHTML=sum;
@@ -119,6 +158,7 @@ function s2(){
         correct.play();
         document.getElementById("popup").style.background="green";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Correct Choice<br>+10";
         sum+=10;
         document.getElementById("score").innerHTML=sum;
@@ -130,6 +170,7 @@ function s2(){
         wrong.play();
         document.getElementById("popup").style.background="red";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Wrong Choice!!<br>-5";
         sum-=5;
         document.getElementById("score").innerHTML=sum;
@@ -148,6 +189,7 @@ function s3(){
         correct.play();
         document.getElementById("popup").style.background="green";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Correct Choice<br>+10";
         sum+=10;
         document.getElementById("score").innerHTML=sum;
@@ -159,6 +201,7 @@ function s3(){
         wrong.play();
         document.getElementById("popup").style.background="red";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Wrong Choice!!<br>-5";
         sum-=5;
         document.getElementById("score").innerHTML=sum;
@@ -177,6 +220,7 @@ function s4(){
         correct.play();
         document.getElementById("popup").style.background="green";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Correct Choice<br>+10";
         sum+=10;
         document.getElementById("score").innerHTML=sum;
@@ -188,6 +232,7 @@ function s4(){
         wrong.play();
         document.getElementById("popup").style.background="red";
         document.getElementById("popup").style.display="";
+        document.getElementById("player").style.display="none";
         document.getElementById("res").innerHTML="Wrong Choice!!<br>-5";
         sum-=5;
         document.getElementById("score").innerHTML=sum;
@@ -197,16 +242,27 @@ function s4(){
 
 
 
-//mode
+//Day/Night Mode
 function mode(){
-    if ( document.getElementById("merabody").classList.contains('day'))
+    if ( document.getElementById("mainbody").classList.contains('day'))
     {
     document.getElementById("mode").innerHTML='<i class="fas fa-moon"></i>';
-    document.getElementById("merabody").classList.toggle('night');
+    document.getElementById("mainbody").classList.toggle('night');
     }
-    if ( document.getElementById("merabody").classList.contains('night'))
+    if ( document.getElementById("mainbody").classList.contains('night'))
     {
     document.getElementById("mode").innerHTML='<i class="fas fa-sun"></i>';
     }
     
+}
+
+
+//back
+
+function gohome(){
+    document.getElementById("scoreboard").style.display="none";
+}
+
+function show_score(){
+    document.getElementById("scoreboard").style.display="flex";
 }
