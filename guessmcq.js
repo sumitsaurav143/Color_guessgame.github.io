@@ -269,7 +269,7 @@ function show_score(){
 
 //whatsapp share
 function whatsapp() {
-    window.open("whatsapp://send?text="+player+" has scored "+sum+" in colour guess game."+
-    "Why don't you try and score more than "+player+"!!"+
+    window.open("whatsapp://send?text=*"+player+"* has scored *"+sum+"* in colour guess game."+
+    "Why don't you try and score more than "+player+"?"+
     " Play Here: "+"https://sumitsaurav143.github.io/Color_guessgame.github.io/");
 }
