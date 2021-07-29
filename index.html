@@ -9,22 +9,38 @@
     <script src="guessmcq.js"></script>
     <title>COLOR GUESS</title>
 </head>
-<body id="merabody" class="day">
+<body id="mainbody" class="day" onload="highscorefinder()">
     <button id="mode" onclick="mode()"><i class="fas fa-moon"></i></button>
+
+    <div id="scoreboard">
+        <div id="scr_head">
+            <i class="fas fa-award"></i>
+            <h2 id="scr_title">Score Board</h2>
+            <i class="fas fa-award"></i>
+        </div>
+        <div id="score_card">
+        </div>
+        <button id="back_btn" onclick="gohome()"><i class="fas fa-arrow-circle-left"></i></button>
+    </div>
+
     <div id="finalscreen">
         <i class="fas fa-trophy"></i>
         <p id="fscr">Score</p>
         <button id="again" onclick="window.location.reload()"><i class="fas fa-redo-alt"></i></button>
     </div>
+
     <div class="head_bar">
         <h1>GUESS THE COLOR CODE</h1>
     </div>
+
     <div class="container">
         <div id="popup" class="popup">
             <h3 id="res">Let's Play!!</h3>
+            <input type="text" placeholder="Enter Your Name" id="player">
             <br>
             <button id="next" onclick=start()><i class="fas fa-hand-peace"></i></button>
         </div>
+
         <div class="left_part">
             <div id="ques" class="ques">
                 <p id="qh">Guess Color</p>
@@ -40,17 +56,25 @@
                 <button class="btn" id="op4" onclick="s4()"></button>
             </div>
         </div>
+
         <div class="right_part">
+                <div id="highscore">
+                    <h2 id="hs">Highest Scorer</h2>
+                    <p id="h_score">None: 0</p>
+                </div>
             <div id="tm">
                     <div>
                         <i class="fas fa-stopwatch"></i>
                     </div>
                      <div>
-                         <p id="timer">5</p>
+                         <p id="timer">10</p>
                      </div>
             </div>
-                <h2>Score:</h2>
-                <p id="score">0</p>
+                <div id="score_box">
+                    <h2>Score</h2>
+                    <p id="score">0</p>
+                </div>
+                <button id="show_score" onclick="show_score()"><i class="fas fa-star-half-alt"></i></button>
                 <button id="restarter" onclick="window.location.reload()"><i class="fas fa-redo-alt"></i></button>
             </div>
 
