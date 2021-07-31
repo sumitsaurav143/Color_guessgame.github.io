@@ -9,25 +9,30 @@ var player;
 //Onstart Check for highscorer
 function highscorefinder()
 {
-var h_name="Computer";
-var h_scorer=-100;
-const data=localStorage;
-const score_card=document.getElementById("score_card");
-for(var i=0;i<data.length;i++)
-{
-const score_data=document.createElement("div");
-score_data.setAttribute("class","scr_data");
-score_data.innerText=data.key(i)+" : "+data.getItem(data.key(i));
-score_card.appendChild(score_data);
-if(data.getItem(data.key(i))>h_scorer)
-{
-    h_name=data.key(i);
-    h_scorer=Number(data.getItem(h_name));
-}
-}
-document.getElementById("h_score").innerText=h_name+" : "+h_scorer;
+    var h_name="Computer"; //By default Highscorer Name
+    var h_scorer=-100;    //By default Highscorer score
+    const data=localStorage;  //get local storage data
+
+    const score_card=document.getElementById("score_card");
+
+    for(var i=0;i<data.length;i++)
+    {
+        const score_data=document.createElement("div");
+        score_data.setAttribute("class","scr_data");
+        score_data.innerText=data.key(i)+" : "+data.getItem(data.key(i));
+        score_card.appendChild(score_data);
+
+        //check highest scorer from list
+        if(data.getItem(data.key(i))>h_scorer)
+        {
+            h_name=data.key(i);
+            h_scorer=Number(data.getItem(h_name));
+        }
+    }
+    document.getElementById("h_score").innerText=h_name+" : "+h_scorer;
 }
 
+// Main Start
 function start()
 {
     player=document.getElementById("player").value;
@@ -38,9 +43,9 @@ function start()
     chance++;
 
     if(chance<10)
-    document.getElementById("curr").innerText="0"+chance;
+        document.getElementById("curr").innerText="0"+chance;
     else
-    document.getElementById("curr").innerText=chance;
+        document.getElementById("curr").innerText=chance;
 
     document.getElementById("popup").style.display="none";
     document.getElementById("restarter").style.display="block";
@@ -246,23 +251,23 @@ function s4(){
 function mode(){
     if ( document.getElementById("mainbody").classList.contains('day'))
     {
-    document.getElementById("mode").innerHTML='<i class="fas fa-moon"></i>';
-    document.getElementById("mainbody").classList.toggle('night');
+        document.getElementById("mode").innerHTML='<i class="fas fa-moon"></i>';
+        document.getElementById("mainbody").classList.toggle('night');
     }
     if ( document.getElementById("mainbody").classList.contains('night'))
     {
-    document.getElementById("mode").innerHTML='<i class="fas fa-sun"></i>';
+        document.getElementById("mode").innerHTML='<i class="fas fa-sun"></i>';
     }
     
 }
 
 
 //back
-
 function gohome(){
     document.getElementById("scoreboard").style.display="none";
 }
 
+//show scores
 function show_score(){
     document.getElementById("scoreboard").style.display="flex";
 }
